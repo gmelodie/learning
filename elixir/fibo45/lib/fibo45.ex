@@ -4,9 +4,12 @@ defmodule Fibo45 do
   @correct_45th_number 1134903170
 
   def fibo(stop_idx, curr_idx \\ 3, last_num \\ 1, second_to_last_num \\ 1)
-
   def fibo(stop_idx, curr_idx, last_num, _) when curr_idx == stop_idx + 1 do last_num end
-  def fibo(stop_idx, _, _, _) when stop_idx < 3 do IO.puts("Invalid stop index. Needs to be higher than 2") end
+  def fibo(stop_idx, _, _, _) when stop_idx == 1 do 1 end
+  def fibo(stop_idx, _, _, _) when stop_idx == 2 do 1 end
+  def fibo(stop_idx, _, _, _) when stop_idx < 1 do
+    raise ArgumentError, message: "Invalid stop index. Needs to be higher than 0"
+  end
 
   def fibo(stop_idx, curr_idx, last_num, second_to_last_num) do
     curr_num = last_num + second_to_last_num
